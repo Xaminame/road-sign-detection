@@ -12,4 +12,35 @@ GTSRB (German Traffic Sign Recognition Benchmark), 2500 изображений, 
 - SSD
 - RT-DETR
 
+## Технологический стек
+
+- **Язык:** Python 3.10+
+- **Фреймворки:** PyTorch, Ultralytics, Torchvision, Torchmetrics
+- **Обработка данных:** Pandas, NumPy, OpenCV, Albumentations (опционально)
+- **Визуализация:** Matplotlib, Seaborn
+- **Аппаратное обеспечение:** GPU NVIDIA Tesla T4 (Google Colab)
+
 ## Структура проекта
+road-sign-detection/
+├── configs/
+├── data/
+│   ├── raw/
+│   └── processed/
+├── src/
+│   ├── dataset/
+│   ├── models/
+│   ├── training/
+│   ├── evaluation/
+│   └── utils/
+├── notebooks/
+└── results/
+    ├── plots/
+    └── logs/
+
+##Ключевые результаты
+
+- **SSD300** показал неожиданный лучший результат по `mAP@0.5` (**0.993**) благодаря специфике датасета (один крупный, центрированный объект на изображении).
+- **RT-DETR** продемонстрировал наилучший баланс Precision/Recall (**0.873 / 0.934**) среди моделей с полной оценкой метрик.
+- **YOLOv10n** превзошла YOLOv8n (`mAP@0.5`: 0.949 против 0.925) благодаря NMS-free обучению.
+- Увеличение обучающей выборки с 1000 до 2500 изображений для YOLOv8n дало прирост `mAP@0.5` на **34%** и Recall на **77%**.
+- Применение **Mixed Precision (AMP)** и уменьшение разрешения до 320×320 ускорило обучение torchvision-моделей более чем в **2.3 раза**.
