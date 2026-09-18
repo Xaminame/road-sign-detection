@@ -1,0 +1,23 @@
+# Данные (слишком большие для git)
+data/raw/
+data/processed/
+dataset/
+*.jpg
+*.jpeg
+*.png
+!results/plots/*.png
+
+# Веса моделей (тоже большие)
+*.pt
+*.pth
+runs/
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+venv/
+.venv/
+
+# Colab
+.config/

@@ -1,0 +1,32 @@
+# Общие настройки эксперимента
+dataset:
+  n_samples: 2500
+  val_ratio: 0.15
+  seed: 42
+  data_yaml_path: data/processed/data.yaml
+
+training:
+  imgsz: 320
+  epochs_yolo: 30
+  epochs_rtdetr: 25
+  epochs_torchvision: 10
+  batch_yolo: 16
+  batch_rtdetr: 8
+  batch_torchvision: 8
+  patience: 10
+  device: 0
+
+models:
+  - name: yolov8n
+    type: yolo
+    weights: yolov8n.pt
+  - name: yolov10n
+    type: yolo
+    weights: yolov10n.pt
+  - name: rtdetr
+    type: rtdetr
+    weights: rtdetr-l.pt
+  - name: faster_rcnn
+    type: torchvision
+  - name: ssd
+    type: torchvision
